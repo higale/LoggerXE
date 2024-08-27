@@ -1,0 +1,50 @@
+object formMain: TformMain
+  Left = 100
+  Top = 50
+  Caption = 'Logger Demo FMX'
+  ClientHeight = 534
+  ClientWidth = 536
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  Left = 100
+  Top = 50
+  DesignerMasterStyle = 0
+  object btn1: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 448.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 0
+    Text = #36755#20986#26085#24535
+    TextSettings.Trimming = None
+    OnClick = btn1Click
+  end
+  object btn3: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 448.000000000000000000
+    Position.Y = 50.000000000000000000
+    TabOrder = 1
+    Text = #21333#26465#26085#24535
+    TextSettings.Trimming = None
+    OnClick = btn3Click
+  end
+  object mmoLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Style, FontColor]
+    TextSettings.Font.Family = #23435#20307
+    TextSettings.WordWrap = True
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 432.000000000000000000
+    Size.Height = 517.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'mmoLogStyle1'
+    TabOrder = 2
+    Viewport.Width = 428.000000000000000000
+    Viewport.Height = 513.000000000000000000
+  end
+end

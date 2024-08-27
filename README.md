@@ -1,2 +1,45 @@
-# LoggerXE
-Delphi æ—¥å¿—ç±»(Logger Class for delphi xe)
+# Delphi ÈÕÖ¾Àà(Logger Class for delphi xe)
+- v1.0.2
+- 2024-08-27 by gale
+- https://github.com/higale/LoggerXE
+
+## ·½·¨:
+- Debug£ºµ÷ÊÔ£¬Í¨³£ÔÚ¿ª·¢ÖÐ»á½«ÆäÉèÖÃÎª×îµÍµÄÈÕÖ¾¼¶±ð£¬ÓÃÓÚÊä³öÏêÏ¸µÄµ÷ÊÔÐÅÏ¢¡£
+- Info£ºÐÅÏ¢£¬ÓÃÓÚÊä³ö³£ÓÃµÄÐÅÏ¢£¬Ê¹ÓÃ½ÏÎªÆµ·±¡£
+- Warn£º¾¯¸æ£¬±íÃ÷»á³öÏÖÇ±ÔÚ´íÎóµÄÇéÐÎ£¬ËäÈ»³ÌÐò²»»á±¨´í£¬µ«ÈÔÐè×¢Òâ¡£
+- Error£º´íÎó£¬¼ÇÂ¼´íÎóºÍÒì³£ÐÅÏ¢¡£
+- Fatal£ºÖÂÃü´íÎó£¬Ò»µ©·¢Éú£¬³ÌÐò»ù±¾ÉÏÐèÒªÍ£Ö¹¡£
+
+## ÈÕÖ¾ÎÄ¼þÎ»ÖÃ
+  ¿ÉÒÔÍ¨¹ýÉèÖÃRootÀ´¸Ä±äÈÕÖ¾ÎÄ¼þÎ»ÖÃ£¬Èç¹û²»ÉèÖÃ£¬ÈÕÖ¾È±Ê¡´æ´¢ÔÚ
+- Windows:
+*³ÌÐòËùÔÚÄ¿Â¼/log/*
+- MacOS
+*/Users/µ±Ç°ÓÃ»§/.³ÌÐòÃû/log/*
+
+## ×¢Òâ
+g_LoggerÊµÀýÒÑ¾­×Ô¶¯´´½¨£¬¿ÉÒÔÖ±½ÓÊ¹ÓÃ
+
+## Ê¹ÓÃ·½·¨£º
+    uses
+      Logger;
+    ...
+    g_Logger.Debug('This is a %s log',['debug'])
+    g_Logger.Error('·¢ÉúÁËÒ»Ð©´íÎó£¡');
+
+    VCLÏÔÊ¾ÈÕÖ¾
+    g_Logger.OnLog := procedure(Sender: TObject; ALevel: TLogLevel; ALevelTag: string; ALog: string; ATime: TDateTime)
+      begin
+        if mmoLog.Lines.Count > 1000 then
+          mmoLog.Text := 'clear...';
+        mmoLog.Lines.Add(Format('%s%s%s', [FormatDateTime('hh:mm:ss', ATime), ALevelTag, ALog]));
+      end;
+
+    FMXÏÔÊ¾ÈÕÖ¾
+    g_Logger.OnLog := procedure(Sender: TObject; ALevel: TLogLevel; ALevelTag: string; ALog: string; ATime: TDateTime)
+      begin
+        if mmoLog.Lines.Count > 1000 then
+          mmoLog.Text := 'clear...';
+        mmoLog.Lines.Add(Format('%s%s%s', [FormatDateTime('hh:mm:ss', ATime), ALevelTag, ALog]));
+        mmoLog.GoToTextEnd;
+      end;
